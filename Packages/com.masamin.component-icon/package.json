@@ -1,0 +1,12 @@
+{
+  "name": "com.masamin.component-icon",
+  "version": "1.0.0",
+  "displayName": "Component Icon Viewer",
+  "description": "Show Component Icon on Editor View.",
+  "unity": "2021.3",
+  "documentationUrl": "https://qiita.com/masamin/items/78ba7238dae7aacdc28c",
+  "author": {
+    "name": "masamin",
+    "url": "https://qiita.com/masamin"
+  }
+}
