@@ -9,6 +9,7 @@ on:
       - .github/workflows/label-syncer.yml
 
 permissions:
+  contents: read
   issues: write
 
 jobs:
