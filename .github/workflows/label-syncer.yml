@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - .github/labels.json
-      - .github/workflows/label-syncer.yml
 
 permissions:
   contents: read
@@ -20,4 +17,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: srealmoreno/label-sync-action@v1
         with:
+          config-file: |
+            .github/labels.json
           clean-labels: true
