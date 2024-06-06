@@ -1,13 +1,16 @@
 {
   "dependencies": {
-    "com.lox9973.udonflat": {
-      "version": "file:F:/Unity/Packages/com.lox9973.udonflat-0.1.15.tgz",
+    "com.masamin.component-icon": {
+      "version": "file:com.masamin.component-icon",
       "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {
-        "com.vrchat.base": "3.6.0",
-        "com.vrchat.worlds": "3.6.0"
-      }
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.seaeees.simple-folder-icon": {
+      "version": "file:com.seaeees.simple-folder-icon",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.ai.navigation": {
       "version": "1.1.5",

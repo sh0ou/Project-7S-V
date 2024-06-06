@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.lox9973.udonflat": "file:F:/Unity/Packages/com.lox9973.udonflat-0.1.15.tgz",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.test-framework": "1.1.29",
     "com.unity.textmeshpro": "3.0.9",
