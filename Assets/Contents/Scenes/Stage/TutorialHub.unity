@@ -550,6 +550,7 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 1166613541}
   jsonFile: {fileID: 4900000, guid: 02a6e656f414c854a8faded94cbb9c3e, type: 3}
+  targetCEV: {fileID: 1166613540}
 --- !u!1001 &1629739840
 PrefabInstance:
   m_ObjectHideFlags: 0
