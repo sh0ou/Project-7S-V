@@ -1,0 +1,14 @@
+{
+    "name": "sh0uRoom.PJ7S",
+    "rootNamespace": "sh0uRoom.PJ7S",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
