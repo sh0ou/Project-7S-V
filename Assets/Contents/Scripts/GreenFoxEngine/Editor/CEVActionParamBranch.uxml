@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-shrink: 0; flex-wrap: nowrap; flex-direction: row;">
+            <ui:TextField picking-mode="Ignore" value="ref ID" style="width: 40%;" />
+            <ui:EnumField type="sh0uRoom.GFE.IfSign, sh0uRoom.GFE" />
+            <ui:TextField picking-mode="Ignore" value="if value" name="TextField" style="width: 40%;" />
+        </ui:VisualElement>
+        <ui:TextField picking-mode="Ignore" label="is True" value="filler text" />
+        <ui:TextField picking-mode="Ignore" label="is False" value="filler text" />
+    </ui:VisualElement>
+</ui:UXML>

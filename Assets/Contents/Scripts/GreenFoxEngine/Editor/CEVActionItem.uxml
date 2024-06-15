@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:EnumField label="アクションタイプ" type="sh0uRoom.GFE.EventActionType, sh0uRoom.GFE" name="ActionType" />
+        <ui:Foldout text="Talk" name="Talk" />
+        <ui:Foldout text="Choose" name="Choose" />
+        <ui:Foldout text="ParamChange" name="ParamChange" />
+        <ui:Foldout text="ParamBranch" name="ParamBranch" />
+    </ui:VisualElement>
+</ui:UXML>

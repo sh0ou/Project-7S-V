@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:TextField picking-mode="Ignore" label="話者名" value="filler text" />
+        <ui:TextField picking-mode="Ignore" label="本文" value="filler text&#10;filler text" multiline="true" />
+        <uie:ColorField label="ウインドウの色" value="RGBA(0.000, 1.000, 1.000, 1.000)" />
+    </ui:VisualElement>
+</ui:UXML>

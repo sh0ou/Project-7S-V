@@ -69,7 +69,7 @@ namespace sh0uRoom.GFE
             {
                 Debug.LogError("Failed to deserialize json");
             }
-        }
+        } 
 
         private void AddActionToArray(ref CommonEventAction[] array, CommonEventAction newAction)
         {
