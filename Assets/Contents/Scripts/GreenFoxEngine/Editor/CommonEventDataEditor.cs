@@ -3,66 +3,56 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UdonSharpEditor;
 using System.Linq;
+using UnityEditor.UIElements;
 
 namespace sh0uRoom.GFE
 {
     [CustomEditor(typeof(CommonEventData))]
     public class CommonEventDataEditor : Editor
     {
-        // [SerializeField] private VisualTreeAsset uxmlAsset;
-        // private VisualElement rootVisualElement;
-
-        // private PopupField<EventActionType> actionTypeField;
-        private VisualElement actionContainer;
+        [SerializeField] private VisualTreeAsset rootAsset;
+        [SerializeField] private VisualTreeAsset actionItemAsset;
+        [SerializeField] private VisualTreeAsset actionTalkAsset;
+        [SerializeField] private VisualTreeAsset actionChooseAsset;
+        [SerializeField] private VisualTreeAsset actionChooseItemAsset;
+        [SerializeField] private VisualTreeAsset actionParamBranchAsset;
+        [SerializeField] private VisualTreeAsset actionParamChangeAsset;
 
         public override VisualElement CreateInspectorGUI()
         {
-            if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return base.CreateInspectorGUI();
-            // if (uxmlAsset == null) return base.CreateInspectorGUI();
+            var root = new VisualElement();
 
-            // rootVisualElement = new VisualElement();
-            // var uxmlRoot = uxmlAsset.CloneTree();
-            // rootVisualElement.Add(uxmlRoot);
+            var imguiContainer = new IMGUIContainer(() =>
+            {
+                if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target))
+                {
+                    root.Clear();
+                    root.Add(new IMGUIContainer(base.OnInspectorGUI));
+                }
+            });
 
-            // popupフィールドの初期化
-            // actionTypeField = rootVisualElement.Q<PopupField<EventActionType>>("#ActionType");
-            // actionTypeField.RegisterValueChangedCallback(evt => UpdateActionUI(evt.newValue));
+            root.Add(imguiContainer);
 
-            // actionContainerの初期化
-            // actionContainer = rootVisualElement.Q<VisualElement>("ActionContainer");
-            actionContainer = new VisualElement();
+            root.Add(rootAsset.CloneTree());
 
-            // UpdateActionUI(actionTypeField.value);
+            var itemView = root.Q<ListView>();
+            itemView.makeItem = actionItemAsset.CloneTree;
 
-            // return rootVisualElement;
-            return base.CreateInspectorGUI();
+            // var talkView = itemView.Q<ListView>();
+            // talkView.makeItem = actionTalkAsset.CloneTree;
+
+            // var chooseView = itemView.Q<ListView>();
+            // chooseView.makeItem = actionChooseAsset.CloneTree;
+            // var chooseItemView = chooseView.Q<ListView>();
+            // chooseItemView.makeItem = actionChooseItemAsset.CloneTree;
+
+            // var paramBranchView = itemView.Q<ListView>();
+            // paramBranchView.makeItem = actionParamBranchAsset.CloneTree;
+
+            // var paramChangeView = itemView.Q<ListView>();
+            // paramChangeView.makeItem = actionParamChangeAsset.CloneTree;
+
+            return root;
         }
-
-        // private void UpdateActionUI(EventActionType actionType)
-        // {
-        //     actionContainer.Clear();
-
-        //     switch (actionType)
-        //     {
-        //         case EventActionType.Talk:
-        //             var talkAction = new TextField("Talk Action");
-        //             actionContainer.Add(talkAction);
-        //             break;
-        //         case EventActionType.Choose:
-        //             var chooseAction = new TextField("Choose Action");
-        //             actionContainer.Add(chooseAction);
-        //             break;
-        //         case EventActionType.ParameterChange:
-        //             var paramChangeAction = new TextField("Parameter Change Action");
-        //             actionContainer.Add(paramChangeAction);
-        //             break;
-        //         case EventActionType.ParameterBranch:
-        //             var paramBranchAction = new TextField("Parameter Branch Action");
-        //             actionContainer.Add(paramBranchAction);
-        //             break;
-        //         default:
-        //             break;
-        //     }
-        // }
     }
 }

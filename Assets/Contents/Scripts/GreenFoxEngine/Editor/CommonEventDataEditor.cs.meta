@@ -4,7 +4,19 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - uxmlAsset: {fileID: 9197481963319205126, guid: 79b9857fb49db1941a994b3aaf4d0939,
+  - rootAsset: {fileID: 9197481963319205126, guid: 79b9857fb49db1941a994b3aaf4d0939,
+      type: 3}
+  - actionItemAsset: {fileID: 9197481963319205126, guid: f8a16e892d9cfef41aac8c3c7b8a8157,
+      type: 3}
+  - actionTalkAsset: {fileID: 9197481963319205126, guid: 26a8dc6c16a5a824fb60bb98a055c307,
+      type: 3}
+  - actionChooseAsset: {fileID: 9197481963319205126, guid: 5c261572eaff9fa4ca9133dd09677d03,
+      type: 3}
+  - actionChooseItemAsset: {fileID: 9197481963319205126, guid: 49bac3bd9869496428c134a742a60528,
+      type: 3}
+  - actionParamBranchAsset: {fileID: 9197481963319205126, guid: 193c45110edc7d647b43a02753ba94cc,
+      type: 3}
+  - actionParamChangeAsset: {fileID: 9197481963319205126, guid: 02a479044cf3e974a81801db0695f704,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

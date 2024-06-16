@@ -450,7 +450,7 @@ MonoBehaviour:
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
-  _syncMethod: 2
+  _syncMethod: 1
   serializedProgramAsset: {fileID: 11400000, guid: 81370fa17a2b5184ab42459039644ff2,
     type: 2}
   programSource: {fileID: 11400000, guid: 1993a1e65cfdd134db55cf34fe718db5, type: 2}
@@ -487,11 +487,9 @@ MonoBehaviour:
       text: 
       windowColor: 
     chooseAction:
-      text:
-      - 
+      text: []
       defaultId: 0
-      eventNames:
-      - 
+      eventNames: []
     paramChangeAction:
       inputId: 
       outputId: 
