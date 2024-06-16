@@ -1,5 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:VisualElement name="VisualElement" style="flex-grow: 1;">
-        <ui:Foldout text="ActionList" />
-    </ui:VisualElement>
-</ui:UXML>

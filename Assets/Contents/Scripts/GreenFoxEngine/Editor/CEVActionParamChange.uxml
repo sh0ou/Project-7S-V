@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <ui:VisualElement style="flex-grow: 1;">
-        <ui:TextField picking-mode="Ignore" label="入力値のID" value="filler text" name="TextField" />
-        <ui:TextField picking-mode="Ignore" label="出力値のID" value="filler text" />
+        <ui:TextField picking-mode="Ignore" label="入力値のID" value="filler text" name="TextField" binding-path="inputId" />
+        <ui:TextField picking-mode="Ignore" label="出力値のID" value="filler text" binding-path="outputId" />
     </ui:VisualElement>
 </ui:UXML>

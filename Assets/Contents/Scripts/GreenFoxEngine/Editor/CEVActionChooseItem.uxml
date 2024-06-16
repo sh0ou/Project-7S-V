@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
-        <ui:RadioButton />
-        <ui:TextField picking-mode="Ignore" value="text" style="width: 45%;" />
-        <ui:TextField picking-mode="Ignore" value="event name" style="width: 45%;" />
+        <ui:RadioButton binding-path="defaultId" />
+        <ui:TextField picking-mode="Ignore" value="text" binding-path="text" style="width: 45%;" />
+        <ui:TextField picking-mode="Ignore" value="event name" binding-path="eventNames" style="width: 45%;" />
     </ui:VisualElement>
 </ui:UXML>

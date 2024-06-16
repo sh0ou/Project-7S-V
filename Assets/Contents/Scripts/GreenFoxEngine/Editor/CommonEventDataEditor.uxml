@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <ui:VisualElement style="flex-grow: 1;">
-        <ui:ListView header-title="Actions" show-add-remove-footer="true" reorderable="true" show-foldout-header="true" binding-path="ActionType" virtualization-method="DynamicHeight" fixed-item-height="30" show-border="true" reorder-mode="Animated" />
+        <ui:ListView header-title="Actions" show-add-remove-footer="true" reorderable="true" show-foldout-header="true" binding-path="actions" virtualization-method="DynamicHeight" fixed-item-height="30" show-border="true" reorder-mode="Animated" name="CEVActionList" />
     </ui:VisualElement>
 </ui:UXML>
