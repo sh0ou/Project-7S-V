@@ -22,6 +22,7 @@ namespace sh0uRoom.GFE
         {
             var root = new VisualElement();
 
+            //UdonSharpBehaviourのヘッダーを表示
             var imguiContainer = new IMGUIContainer(() =>
             {
                 if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target))
@@ -30,13 +31,37 @@ namespace sh0uRoom.GFE
                     root.Add(new IMGUIContainer(base.OnInspectorGUI));
                 }
             });
-
             root.Add(imguiContainer);
 
-            root.Add(rootAsset.CloneTree());
+            rootAsset.CloneTree(root);
 
-            var itemView = root.Q<ListView>();
-            itemView.makeItem = actionItemAsset.CloneTree;
+            //アクションリストの要素数を出力
+            var actionListView = root.Q<ListView>();
+            Debug.Log($"actionListView: {actionListView.name}");
+            var commonEventData = target as CommonEventData;
+            if (actionListView != null)
+            {
+                //各アクションの要素を生成
+                foreach (var action in commonEventData.actions)
+                {
+                    var actionType = action.actionType;
+
+                    switch (actionType)
+                    {
+                        case EventActionType.Talk:
+                            break;
+                        case EventActionType.Choose:
+                            break;
+                        case EventActionType.ParameterBranch:
+                            break;
+                        case EventActionType.ParameterChange:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
 
             // var talkView = itemView.Q<ListView>();
             // talkView.makeItem = actionTalkAsset.CloneTree;
