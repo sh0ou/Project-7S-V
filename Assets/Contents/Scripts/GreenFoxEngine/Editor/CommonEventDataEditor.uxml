@@ -1,5 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:VisualElement style="flex-grow: 1;">
+    <ui:VisualElement name="RootView" style="flex-grow: 1;">
         <ui:ListView header-title="Actions" show-add-remove-footer="true" reorderable="true" show-foldout-header="true" binding-path="actions" virtualization-method="DynamicHeight" fixed-item-height="30" show-border="true" reorder-mode="Animated" name="CEVActionList" />
+        <ui:Label tabindex="-1" text="Green Fox Engine" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Logo" style="padding-top: 7px; padding-right: 0; padding-bottom: 7px; padding-left: 0; align-self: center;" />
+        <ui:Label tabindex="-1" text="(c) 2024 sh0uRoom" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Credit" style="align-self: center; font-size: 10px;" />
     </ui:VisualElement>
 </ui:UXML>

@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:VisualElement style="flex-grow: 1;">
-        <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-shrink: 0; flex-wrap: nowrap; flex-direction: row;">
-            <ui:TextField picking-mode="Ignore" value="ref ID" binding-path="refId" style="width: 40%;" />
-            <ui:EnumField type="sh0uRoom.GFE.IfSign, sh0uRoom.GFE" binding-path="ifSign" />
-            <ui:TextField picking-mode="Ignore" value="if value" name="TextField" binding-path="ifValue" style="width: 40%;" />
+    <ui:VisualElement name="ParamBranchView" style="flex-grow: 1;">
+        <ui:VisualElement name="IfView" style="flex-grow: 0; flex-shrink: 0; flex-wrap: nowrap; flex-direction: row;">
+            <ui:TextField picking-mode="Ignore" value="ref ID" binding-path="refId" name="RefId" style="width: 40%;" />
+            <ui:EnumField type="sh0uRoom.GFE.IfSign, sh0uRoom.GFE" binding-path="ifSign" name="Sign" />
+            <ui:TextField picking-mode="Ignore" value="if value" name="Value" binding-path="ifValue" style="width: 40%;" />
         </ui:VisualElement>
-        <ui:TextField picking-mode="Ignore" label="is True" value="filler text" binding-path="trueEventName" />
-        <ui:TextField picking-mode="Ignore" label="is False" value="filler text" binding-path="falseEventName" />
+        <ui:TextField picking-mode="Ignore" label="is True" value="filler text" binding-path="trueEventName" name="TrueEventName" />
+        <ui:TextField picking-mode="Ignore" label="is False" value="filler text" binding-path="falseEventName" name="FalseEventName" />
     </ui:VisualElement>
 </ui:UXML>

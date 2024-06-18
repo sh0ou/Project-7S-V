@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:VisualElement style="flex-grow: 1;">
-        <ui:TextField picking-mode="Ignore" label="話者名" value="filler text" binding-path="name" />
-        <ui:TextField picking-mode="Ignore" label="本文" value="filler text&#10;filler text" multiline="true" binding-path="text" />
-        <uie:ColorField label="ウインドウの色" value="RGBA(0.000, 1.000, 1.000, 1.000)" binding-path="windowColor" />
+    <ui:VisualElement name="TalkView" style="flex-grow: 1;">
+        <ui:TextField picking-mode="Ignore" label="話者名" value="filler text" binding-path="name" name="Name" />
+        <ui:TextField picking-mode="Ignore" label="本文" value="filler text&#10;filler text" multiline="true" binding-path="text" name="Text" />
+        <uie:ColorField label="ウインドウの色" value="RGBA(0.000, 1.000, 1.000, 1.000)" binding-path="windowColor" name="WindowColor" />
     </ui:VisualElement>
 </ui:UXML>

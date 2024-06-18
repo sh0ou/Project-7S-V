@@ -1,9 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:VisualElement name="CEVActionItem" style="flex-grow: 1;">
+    <ui:VisualElement name="ActionItemView" style="flex-grow: 1;">
         <ui:EnumField label="アクションタイプ" type="sh0uRoom.GFE.EventActionType, sh0uRoom.GFE" name="ActionType" binding-path="actionType" />
-        <ui:Foldout text="Talk" name="Talk" binding-path="talkAction" />
-        <ui:Foldout text="Choose" name="Choose" binding-path="chooseAction" />
-        <ui:Foldout text="ParamChange" name="ParamChange" binding-path="paramChangeAction" />
-        <ui:Foldout text="ParamBranch" name="ParamBranch" binding-path="paramBranchAction" />
     </ui:VisualElement>
 </ui:UXML>
