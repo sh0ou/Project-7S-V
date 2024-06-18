@@ -35,50 +35,19 @@ namespace sh0uRoom.GFE
 
             var actionRoot = actionRootAsset.CloneTree();
             root.Add(actionRoot);
-            
-            // var actionListView = root.Q<ListView>();
-            // Debug.Log($"actionListView: {actionListView.name}");
 
-            // var commonEventData = target as CommonEventData;
-            // if (actionListView != null)
+            //Listを紐づけ
+            var actionList = actionRoot.Q<ListView>();
+            // var actionItem = actionItemAsset.CloneTree();
+            actionList.makeItem = () => actionItemAsset.CloneTree();
+
+            var commonEventData = target as CommonEventData;
+            // foreach (var action in commonEventData.actions)
             // {
-            //     //各アクションの要素を生成
-            //     foreach (var action in commonEventData.actions)
-            //     {
-            //         var actionType = action.actionType;
-
-            //         switch (actionType)
-            //         {
-            //             case EventActionType.Talk:
-            //                 //他のアクションを非表示
-            //                 Debug.Log($"target: {target.name}");
-            //                 break;
-            //             case EventActionType.Choose:
-            //                 break;
-            //             case EventActionType.ParameterBranch:
-            //                 break;
-            //             case EventActionType.ParameterChange:
-            //                 break;
-            //             default:
-            //                 break;
-            //         }
-            //     }
+            //     //List内に追加
+            //     var actionItemView = actionItem.Children().First();
+            //     actionItemView.Add(actionItem);
             // }
-
-
-            // var talkView = itemView.Q<ListView>();
-            // talkView.makeItem = actionTalkAsset.CloneTree;
-
-            // var chooseView = itemView.Q<ListView>();
-            // chooseView.makeItem = actionChooseAsset.CloneTree;
-            // var chooseItemView = chooseView.Q<ListView>();
-            // chooseItemView.makeItem = actionChooseItemAsset.CloneTree;
-
-            // var paramBranchView = itemView.Q<ListView>();
-            // paramBranchView.makeItem = actionParamBranchAsset.CloneTree;
-
-            // var paramChangeView = itemView.Q<ListView>();
-            // paramChangeView.makeItem = actionParamChangeAsset.CloneTree;
 
             return root;
         }
