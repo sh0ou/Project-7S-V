@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - rootAsset: {fileID: 9197481963319205126, guid: 79b9857fb49db1941a994b3aaf4d0939,
+  - actionRootAsset: {fileID: 9197481963319205126, guid: 79b9857fb49db1941a994b3aaf4d0939,
       type: 3}
   - actionItemAsset: {fileID: 9197481963319205126, guid: f8a16e892d9cfef41aac8c3c7b8a8157,
       type: 3}
