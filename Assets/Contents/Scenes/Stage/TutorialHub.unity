@@ -499,6 +499,42 @@ MonoBehaviour:
       ifSign: 0
       trueEventName: 
       falseEventName: 
+  - actionType: 2
+    talkAction:
+      name: 
+      text: 
+      windowColor: 
+    chooseAction:
+      text: []
+      defaultId: 0
+      eventNames: []
+    paramChangeAction:
+      inputId: 
+      outputId: 
+    paramBranchAction:
+      refId: 
+      ifValue: 
+      ifSign: 0
+      trueEventName: 
+      falseEventName: 
+  - actionType: 1
+    talkAction:
+      name: 
+      text: 
+      windowColor: 
+    chooseAction:
+      text: []
+      defaultId: 0
+      eventNames: []
+    paramChangeAction:
+      inputId: 
+      outputId: 
+    paramBranchAction:
+      refId: 
+      ifValue: 
+      ifSign: 0
+      trueEventName: 
+      falseEventName: 
 --- !u!1001 &1629739840
 PrefabInstance:
   m_ObjectHideFlags: 0

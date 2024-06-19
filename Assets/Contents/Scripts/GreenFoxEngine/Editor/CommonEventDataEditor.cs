@@ -38,14 +38,9 @@ namespace sh0uRoom.GFE
 
             //Listを紐づけ
             var actionList = actionRoot.Q<ListView>();
-            var actionItem = actionItemAsset.CloneTree();
-            actionList.makeItem = () => actionItem;
+            actionList.makeItem = () => actionItemAsset.Instantiate();
 
-            var commonEventData = target as CommonEventData;
-            foreach (var action in commonEventData.actions)
-            {
-                
-            }
+
 
             return root;
         }
