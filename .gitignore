@@ -79,3 +79,5 @@ crashlytics-build.properties
 
 /[Aa]ssets/Scenes/VRCDefaultWorldScene/*
 /[Aa]ssets/Scenes/VRCDefaultWorldScene.meta
+/[Aa]ssets/Scenes/VRCDefaultWorldScene.unity
+/[Aa]ssets/Scenes/VRCDefaultWorldScene.unity.meta
