@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UdonSharpEditor;
-using System.Linq;
 using UnityEditor.UIElements;
+using System.Linq;
 
 namespace sh0uRoom.GFE
 {
@@ -36,13 +36,40 @@ namespace sh0uRoom.GFE
             var actionRoot = actionRootAsset.CloneTree();
             root.Add(actionRoot);
 
-            //Listを紐づけ
             var actionList = actionRoot.Q<ListView>();
-            actionList.makeItem = () => actionItemAsset.Instantiate();
-
-
+            actionList.makeItem = MakeActionItem;
 
             return root;
+        }
+
+        private VisualElement MakeActionItem()
+        {
+            VisualElement actionItem = actionItemAsset.CloneTree();
+            var actionType = actionItem.Q<EnumField>().value;
+            Debug.Log(actionType);
+            switch (actionType)
+            {
+                case EventActionType.Talk:
+                    var talk = actionTalkAsset.CloneTree();
+                    // actionItem.Add(talk);
+                    break;
+                case EventActionType.Choose:
+                    var choose = actionChooseAsset.CloneTree();
+                    actionItem.Add(choose);
+                    break;
+                case EventActionType.ParameterBranch:
+                    var paramBranch = actionParamBranchAsset.CloneTree();
+                    actionItem.Add(paramBranch);
+                    break;
+                case EventActionType.ParameterChange:
+                    var paramChange = actionParamChangeAsset.CloneTree();
+                    actionItem.Add(paramChange);
+                    break;
+                default:
+                    break;
+            }
+
+            return actionItem;
         }
     }
 }
