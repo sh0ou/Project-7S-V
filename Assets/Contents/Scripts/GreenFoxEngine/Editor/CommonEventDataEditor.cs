@@ -37,39 +37,71 @@ namespace sh0uRoom.GFE
             root.Add(actionRoot);
 
             var actionList = actionRoot.Q<ListView>();
-            actionList.makeItem = MakeActionItem;
+            actionList.makeItem = actionItemAsset.Instantiate;
+            actionList.bindItem = (element, i) =>
+            {
+                var action = ((CommonEventData)target).actions[i];
+                var enumField = element.Q<EnumField>();
+                enumField.value = action.actionType;
+
+                // Remove old children
+                var container = element.Q("Container");
+                container.Clear();
+
+                switch (action.actionType)
+                {
+                    case EventActionType.Talk:
+                        var talk = actionTalkAsset.CloneTree();
+                        container.Add(talk);
+                        break;
+                    case EventActionType.Choose:
+                        var choose = actionChooseAsset.CloneTree();
+                        container.Add(choose);
+                        break;
+                    case EventActionType.ParameterBranch:
+                        var paramBranch = actionParamBranchAsset.CloneTree();
+                        container.Add(paramBranch);
+                        break;
+                    case EventActionType.ParameterChange:
+                        var paramChange = actionParamChangeAsset.CloneTree();
+                        container.Add(paramChange);
+                        break;
+                    default:
+                        break;
+                }
+
+                enumField.RegisterValueChangedCallback((evt) =>
+                {
+                    action.actionType = (EventActionType)evt.newValue;
+                    EditorUtility.SetDirty(target);
+                    Debug.Log($"Change Type: {i} / {action.actionType}");
+
+                    container.Clear();
+                    switch (action.actionType)
+                    {
+                        case EventActionType.Talk:
+                            var talk = actionTalkAsset.CloneTree();
+                            container.Add(talk);
+                            break;
+                        case EventActionType.Choose:
+                            var choose = actionChooseAsset.CloneTree();
+                            container.Add(choose);
+                            break;
+                        case EventActionType.ParameterBranch:
+                            var paramBranch = actionParamBranchAsset.CloneTree();
+                            container.Add(paramBranch);
+                            break;
+                        case EventActionType.ParameterChange:
+                            var paramChange = actionParamChangeAsset.CloneTree();
+                            container.Add(paramChange);
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            };
 
             return root;
-        }
-
-        private VisualElement MakeActionItem()
-        {
-            VisualElement actionItem = actionItemAsset.CloneTree();
-            var actionType = actionItem.Q<EnumField>().value;
-            Debug.Log(actionType);
-            switch (actionType)
-            {
-                case EventActionType.Talk:
-                    var talk = actionTalkAsset.CloneTree();
-                    // actionItem.Add(talk);
-                    break;
-                case EventActionType.Choose:
-                    var choose = actionChooseAsset.CloneTree();
-                    actionItem.Add(choose);
-                    break;
-                case EventActionType.ParameterBranch:
-                    var paramBranch = actionParamBranchAsset.CloneTree();
-                    actionItem.Add(paramBranch);
-                    break;
-                case EventActionType.ParameterChange:
-                    var paramChange = actionParamChangeAsset.CloneTree();
-                    actionItem.Add(paramChange);
-                    break;
-                default:
-                    break;
-            }
-
-            return actionItem;
         }
     }
 }
