@@ -50,6 +50,8 @@ namespace sh0uRoom.GFE
         private void BindActionItem(VisualElement element, int index)
         {
             var action = ((CommonEventData)target).actions[index];
+            // 追加するとserializedObjectがまだアップデートされてないので手動的にさせる
+            serializedObject.UpdateIfRequiredOrScript();
             var prop = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index);
             var enumField = element.Q<EnumField>(ACTION_TYPE);
             var container = element.Q<VisualElement>(CONTAINER);
