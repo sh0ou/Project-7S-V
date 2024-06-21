@@ -60,10 +60,16 @@ namespace sh0uRoom.GFE
 
             UpdateActionContainer(container, action, prop);
 
-            enumField.RegisterValueChangedCallback(evt =>
+            //古いの
+            enumField.UnregisterValueChangedCallback(ActionChangeCallback);
+            //新しいの
+            enumField.RegisterValueChangedCallback(ActionChangeCallback);
+
+            void ActionChangeCallback(ChangeEvent<System.Enum> evt)
             {
+                Debug.Log($"Change Type: {index} / {action.actionType}");
                 UpdateActionContainer(container, action, prop);
-            });
+            }
         }
 
         /// <summary>
