@@ -50,21 +50,18 @@ namespace sh0uRoom.GFE
         private void BindActionItem(VisualElement element, int index)
         {
             var action = ((CommonEventData)target).actions[index];
-            // 追加するとserializedObjectがまだアップデートされてないので手動的にさせる
-            serializedObject.UpdateIfRequiredOrScript();
-            var prop = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index);
             var enumField = element.Q<EnumField>(ACTION_TYPE);
             var container = element.Q<VisualElement>(CONTAINER);
 
-            enumField.value = action.actionType;
+            // 追加するとserializedObjectがまだアップデートされてないので手動的にさせる
+            serializedObject.UpdateIfRequiredOrScript();
+            var prop = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index);
+            (element as BindableElement).BindProperty(prop);
+
             UpdateActionContainer(container, action, prop);
 
             enumField.RegisterValueChangedCallback(evt =>
             {
-                action.actionType = (EventActionType)evt.newValue;
-                EditorUtility.SetDirty(target);
-                Debug.Log($"Change Type: {index} / {action.actionType}");
-
                 UpdateActionContainer(container, action, prop);
             });
         }
