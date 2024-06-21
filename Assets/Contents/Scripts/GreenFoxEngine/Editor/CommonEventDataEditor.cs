@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UdonSharpEditor;
+using UnityEditor.UIElements;
 
 namespace sh0uRoom.GFE
 {
@@ -49,11 +50,14 @@ namespace sh0uRoom.GFE
         private void BindActionItem(VisualElement element, int index)
         {
             var action = ((CommonEventData)target).actions[index];
+            // 追加するとserializedObjectがまだアップデートされてないので手動的にさせる
+            serializedObject.UpdateIfRequiredOrScript();
+            var prop = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index);
             var enumField = element.Q<EnumField>(ACTION_TYPE);
             var container = element.Q<VisualElement>(CONTAINER);
 
             enumField.value = action.actionType;
-            UpdateActionContainer(container, action.actionType);
+            UpdateActionContainer(container, action, prop);
 
             enumField.RegisterValueChangedCallback(evt =>
             {
@@ -61,7 +65,7 @@ namespace sh0uRoom.GFE
                 EditorUtility.SetDirty(target);
                 Debug.Log($"Change Type: {index} / {action.actionType}");
 
-                UpdateActionContainer(container, action.actionType);
+                UpdateActionContainer(container, action, prop);
             });
         }
 
@@ -70,23 +74,28 @@ namespace sh0uRoom.GFE
         /// </summary>
         /// <param name="container"></param>
         /// <param name="type"></param>
-        private void UpdateActionContainer(VisualElement container, EventActionType type)
+        private void UpdateActionContainer(VisualElement container, CommonEventAction action, SerializedProperty actionProperty)
         {
             container.Clear();
             VisualTreeAsset asset = null;
-            switch (type)
+            string propertyName = null;
+            switch (action.actionType)
             {
                 case EventActionType.Talk:
                     asset = actionTalkAsset;
+                    propertyName = nameof(CommonEventAction.talkAction);
                     break;
                 case EventActionType.Choose:
                     asset = actionChooseAsset;
+                    propertyName = nameof(CommonEventAction.chooseAction);
                     break;
                 case EventActionType.ParameterBranch:
                     asset = actionParamBranchAsset;
+                    propertyName = nameof(CommonEventAction.paramBranchAction);
                     break;
                 case EventActionType.ParameterChange:
                     asset = actionParamChangeAsset;
+                    propertyName = nameof(CommonEventAction.paramChangeAction);
                     break;
                 default:
                     break;
@@ -96,6 +105,7 @@ namespace sh0uRoom.GFE
             {
                 var clonedAsset = asset.CloneTree();
                 container.Add(clonedAsset);
+                clonedAsset.BindProperty(actionProperty.FindPropertyRelative(propertyName));
             }
         }
 
