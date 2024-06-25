@@ -483,9 +483,45 @@ MonoBehaviour:
   actions:
   - actionType: 0
     talkAction:
-      name: 
+      name: zasaf
       text: 
-      windowColor: 
+      windowColor: {r: 0.990566, g: 0.28502133, b: 0.28502133, a: 0}
+    chooseAction:
+      text: []
+      defaultId: 0
+      eventNames: []
+    paramChangeAction:
+      inputId: 
+      outputId: 
+    paramBranchAction:
+      refId: 
+      ifValue: 
+      ifSign: 0
+      trueEventName: 
+      falseEventName: 
+  - actionType: 0
+    talkAction:
+      name: zasaf
+      text: 
+      windowColor: {r: 0.8207547, g: 0.73171055, b: 0.73171055, a: 0}
+    chooseAction:
+      text: []
+      defaultId: 0
+      eventNames: []
+    paramChangeAction:
+      inputId: 
+      outputId: 
+    paramBranchAction:
+      refId: 
+      ifValue: 
+      ifSign: 0
+      trueEventName: 
+      falseEventName: 
+  - actionType: 0
+    talkAction:
+      name: zasaf
+      text: 
+      windowColor: {r: 0.8207547, g: 0.73171055, b: 0.73171055, a: 0}
     chooseAction:
       text: []
       defaultId: 0

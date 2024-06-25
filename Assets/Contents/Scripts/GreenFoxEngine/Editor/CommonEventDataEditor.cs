@@ -1,7 +1,8 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEditor;
 using UdonSharpEditor;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 
 namespace sh0uRoom.GFE
@@ -21,8 +22,26 @@ namespace sh0uRoom.GFE
             var actionList = actionRoot.Q<ListView>();
             actionList.makeItem = actionItemAsset.Instantiate;
             actionList.bindItem = BindActionItem;
+            actionList.itemsAdded += OnAddAction;
+            actionList.itemsRemoved += OnActionRemoved;
+            actionList.itemsSourceChanged += OnSourceChanged;
 
             return root;
+        }
+
+        private void OnSourceChanged()
+        {
+            Debug.Log($"Source Changed / {target}");
+        }
+
+        private void OnAddAction(IEnumerable<int> enumerable)
+        {
+            Debug.Log($"Add Action / {target} - {enumerable}");
+        }
+
+        private void OnActionRemoved(IEnumerable<int> enumerable)
+        {
+            Debug.Log($"Remove Action / {target} - {enumerable}");
         }
 
         /// <summary>
@@ -58,7 +77,14 @@ namespace sh0uRoom.GFE
             var prop = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index);
             (element as BindableElement).BindProperty(prop);
 
-            UpdateActionContainer(container, action, prop);
+            var containerElement = new ContainerElement
+            {
+                Container = container,
+                Action = action,
+                Property = prop
+            };
+
+            UpdateActionContainer(containerElement);
 
             //古いの
             enumField.UnregisterValueChangedCallback(ActionChangeCallback);
@@ -67,8 +93,8 @@ namespace sh0uRoom.GFE
 
             void ActionChangeCallback(ChangeEvent<System.Enum> evt)
             {
-                Debug.Log($"Change Type: {index} / {action.actionType}");
-                UpdateActionContainer(container, action, prop);
+                // Debug.Log($"Change Type: {index} / {action.actionType}");
+                UpdateActionContainer(containerElement);
             }
         }
 
@@ -77,16 +103,16 @@ namespace sh0uRoom.GFE
         /// </summary>
         /// <param name="container"></param>
         /// <param name="type"></param>
-        private void UpdateActionContainer(VisualElement container, CommonEventAction action, SerializedProperty actionProperty)
+        private void UpdateActionContainer(ContainerElement element)
         {
-            container.Clear();
+            element.Container.Clear();
             VisualTreeAsset asset = null;
             string propertyName = null;
-            switch (action.actionType)
+
+            switch (element.Action.actionType)
             {
                 case EventActionType.Talk:
-                    asset = actionTalkAsset;
-                    propertyName = nameof(CommonEventAction.talkAction);
+                    UpdateTalkAction(element);
                     break;
                 case EventActionType.Choose:
                     asset = actionChooseAsset;
@@ -107,9 +133,24 @@ namespace sh0uRoom.GFE
             if (asset != null)
             {
                 var clonedAsset = asset.CloneTree();
-                container.Add(clonedAsset);
-                clonedAsset.BindProperty(actionProperty.FindPropertyRelative(propertyName));
+                element.Container.Add(clonedAsset);
+                // Debug.Log($"Bind Property: {actionProperty} / {propertyName}");
+                clonedAsset.BindProperty(element.Property.FindPropertyRelative(propertyName));
             }
+        }
+
+        private void UpdateTalkAction(ContainerElement element)
+        {
+            var asset = actionTalkAsset.CloneTree();
+            element.Container.Add(asset);
+            asset.BindProperty(element.Property.FindPropertyRelative(nameof(CommonEventAction.talkAction)));
+        }
+
+        private class ContainerElement
+        {
+            public VisualElement Container { get; set; }
+            public CommonEventAction Action { get; set; }
+            public SerializedProperty Property { get; set; }
         }
 
         [SerializeField] private VisualTreeAsset actionRootAsset;
@@ -122,5 +163,9 @@ namespace sh0uRoom.GFE
 
         private const string ACTION_TYPE = "ActionType";
         private const string CONTAINER = "Container";
+        // --- Talk Action ---
+        private const string TALK_NAME = "Name";
+        private const string TALK_TEXT = "Text";
+        private const string WINDOW_COLOR = "WindowColor";
     }
 }
