@@ -481,54 +481,18 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 1166613539}
   eventName: 
   actions:
-  - actionType: 0
-    talkAction:
-      name: CCCCC
-      text: ccccc
-      windowColor: {r: 0.990566, g: 0.28502133, b: 0.28502133, a: 0}
-    chooseAction:
-      text: []
-      defaultId: 0
-      eventNames: []
-    paramChangeAction:
-      inputId: 
-      outputId: 
-    paramBranchAction:
-      refId: 
-      ifValue: 
-      ifSign: 0
-      trueEventName: 
-      falseEventName: 
   - actionType: 2
     talkAction:
-      name: BBBBB
-      text: bbbbb
-      windowColor: {r: 0.990566, g: 0.28502133, b: 0.28502133, a: 0}
+      name: VVV
+      text: Aaa
+      windowColor: {r: 1, g: 0, b: 0, a: 0}
     chooseAction:
       text: []
       defaultId: 0
       eventNames: []
     paramChangeAction:
-      inputId: 
-      outputId: 
-    paramBranchAction:
-      refId: 
-      ifValue: 
-      ifSign: 0
-      trueEventName: 
-      falseEventName: 
-  - actionType: 0
-    talkAction:
-      name: SSS
-      text: sss
-      windowColor: {r: 0.990566, g: 0.28502133, b: 0.28502133, a: 0}
-    chooseAction:
-      text: []
-      defaultId: 0
-      eventNames: []
-    paramChangeAction:
-      inputId: 
-      outputId: 
+      inputId: BBB
+      outputId: bbb
     paramBranchAction:
       refId: 
       ifValue: 

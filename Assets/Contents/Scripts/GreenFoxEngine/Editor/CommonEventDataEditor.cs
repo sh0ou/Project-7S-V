@@ -4,6 +4,7 @@ using UdonSharpEditor;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using System;
 
 namespace sh0uRoom.GFE
 {
@@ -50,13 +51,11 @@ namespace sh0uRoom.GFE
         /// <param name="index"></param>
         private void BindActionItem(VisualElement element, int index)
         {
-            var action = ((CommonEventData)target).actions[index];
-            var enumField = element.Q<EnumField>(ACTION_TYPE);
             var container = element.Q<VisualElement>(CONTAINER);
-
-            // 追加するとserializedObjectがまだアップデートされてないので手動的にさせる
+            var action = ((CommonEventData)target).actions[index];
             serializedObject.UpdateIfRequiredOrScript();
             var prop = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index);
+
             (element as BindableElement).BindProperty(prop);
 
             var containerElement = new ContainerElement
@@ -65,22 +64,50 @@ namespace sh0uRoom.GFE
                 Action = action,
                 Property = prop
             };
-
             UpdateActionContainer(containerElement);
 
             // アクションタイプの変更を監視
-            enumField.UnregisterValueChangedCallback(ActionChangeCallback);
-            enumField.RegisterValueChangedCallback(ActionChangeCallback);
+            container.UnregisterCallback((ChangeEvent<SerializedProperty> evt) => ActionChangeCallback(evt, element, index));
+            container.RegisterCallback((ChangeEvent<SerializedProperty> evt) => ActionChangeCallback(evt, element, index));
 
-            // アクション名を設定
-            void ActionChangeCallback(ChangeEvent<System.Enum> evt)
+            var enumField = element.Q<EnumField>(ACTION_TYPE);
+            enumField.UnregisterValueChangedCallback((ChangeEvent<Enum> evt) => ActionChangeCallback(evt, element, index));
+            enumField.RegisterValueChangedCallback((ChangeEvent<Enum> evt) => ActionChangeCallback(evt, element, index));
+        }
+
+        private void ActionChangeCallback(ChangeEvent<Enum> evt, VisualElement element, int index)
+        {
+            if (evt.newValue == null) return;
+            if (index < 0 || index >= ((CommonEventData)target).actions.Length) return;
+
+            Debug.Log("ActionChangeCallback - Enum");
+            if (ConvertEventToContainer(element, index) is var container)
             {
-                // Debug.Log($"Change Value:{evt.previousValue} -> {evt.newValue}");
-                if (evt.newValue is EventActionType type)
-                {
-                    UpdateActionContainer(containerElement);
-                }
+                UpdateActionContainer(container);
             }
+        }
+
+        private void ActionChangeCallback(ChangeEvent<SerializedProperty> evt, VisualElement element, int index)
+        {
+            if (evt.newValue == null) return;
+            if (index < 0 || index >= ((CommonEventData)target).actions.Length) return;
+
+            Debug.Log("ActionChangeCallback - SerializedProperty");
+            if (ConvertEventToContainer(element, index) is ContainerElement containerElement)
+            {
+                UpdateActionContainer(containerElement);
+            }
+        }
+
+        private ContainerElement ConvertEventToContainer(VisualElement element, int index)
+        {
+            var container = new ContainerElement
+            {
+                Container = element.Q<VisualElement>(CONTAINER),
+                Action = ((CommonEventData)target).actions[index],
+                Property = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index)
+            };
+            return container;
         }
 
         /// <summary> 
