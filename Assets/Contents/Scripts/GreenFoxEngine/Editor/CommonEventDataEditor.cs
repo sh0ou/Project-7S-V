@@ -22,26 +22,8 @@ namespace sh0uRoom.GFE
             var actionList = actionRoot.Q<ListView>();
             actionList.makeItem = actionItemAsset.Instantiate;
             actionList.bindItem = BindActionItem;
-            actionList.itemsAdded += OnAddAction;
-            actionList.itemsRemoved += OnActionRemoved;
-            actionList.itemsSourceChanged += OnSourceChanged;
 
             return root;
-        }
-
-        private void OnSourceChanged()
-        {
-            Debug.Log($"Source Changed / {target}");
-        }
-
-        private void OnAddAction(IEnumerable<int> enumerable)
-        {
-            Debug.Log($"Add Action / {target} - {enumerable}");
-        }
-
-        private void OnActionRemoved(IEnumerable<int> enumerable)
-        {
-            Debug.Log($"Remove Action / {target} - {enumerable}");
         }
 
         /// <summary>
@@ -86,19 +68,22 @@ namespace sh0uRoom.GFE
 
             UpdateActionContainer(containerElement);
 
-            //古いの
+            // アクションタイプの変更を監視
             enumField.UnregisterValueChangedCallback(ActionChangeCallback);
-            //新しいの
             enumField.RegisterValueChangedCallback(ActionChangeCallback);
 
+            // アクション名を設定
             void ActionChangeCallback(ChangeEvent<System.Enum> evt)
             {
-                // Debug.Log($"Change Type: {index} / {action.actionType}");
-                UpdateActionContainer(containerElement);
+                // Debug.Log($"Change Value:{evt.previousValue} -> {evt.newValue}");
+                if (evt.newValue is EventActionType type)
+                {
+                    UpdateActionContainer(containerElement);
+                }
             }
         }
 
-        /// <summary>
+        /// <summary> 
         /// アクションコンテナを更新する
         /// </summary>
         /// <param name="container"></param>
