@@ -80,7 +80,7 @@ namespace sh0uRoom.GFE
             if (evt.newValue == null) return;
             if (index < 0 || index >= ((CommonEventData)target).actions.Length) return;
 
-            Debug.Log("ActionChangeCallback - Enum");
+            // Debug.Log("ActionChangeCallback - Enum");
             if (ConvertEventToContainer(element, index) is var container)
             {
                 UpdateActionContainer(container);
@@ -92,7 +92,7 @@ namespace sh0uRoom.GFE
             if (evt.newValue == null) return;
             if (index < 0 || index >= ((CommonEventData)target).actions.Length) return;
 
-            Debug.Log("ActionChangeCallback - SerializedProperty");
+            // Debug.Log("ActionChangeCallback - SerializedProperty");
             if (ConvertEventToContainer(element, index) is ContainerElement containerElement)
             {
                 UpdateActionContainer(containerElement);
