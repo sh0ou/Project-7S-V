@@ -45,7 +45,26 @@ namespace sh0uRoom.GFE
     {
         public string name;
         public string text;
-        public string windowColor;
+        // public string windowColor;
+        public Color windowColor;
+
+        public string GetWindowColor()
+        {
+            var color = windowColor;
+            return $"{color.r:X2}{color.g:X2}{color.b:X2}{color.a:X2}";
+        }
+
+        public void SetWindowColor(string hex)
+        {
+            if (ColorUtility.TryParseHtmlString($"#{hex}", out var color))
+            {
+                windowColor = color;
+            }
+            else
+            {
+                Debug.LogWarning("Invalid color hex string");
+            }
+        }
     }
 
     [System.Serializable]
