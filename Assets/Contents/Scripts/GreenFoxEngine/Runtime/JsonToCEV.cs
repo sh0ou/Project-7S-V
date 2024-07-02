@@ -87,7 +87,7 @@ namespace sh0uRoom.GFE
             TalkAction talkAction = new TalkAction();
             talkAction.name = talkDict["name"].String;
             talkAction.text = talkDict["text"].String;
-            talkAction.windowColor = talkDict["windowColor"].String;
+            // talkAction.windowColor = talkDict["windowColor"].String;
             return talkAction;
         }
 

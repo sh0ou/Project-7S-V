@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEditor;
 using UdonSharpEditor;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using System;
 
 namespace sh0uRoom.GFE
 {
@@ -49,41 +51,80 @@ namespace sh0uRoom.GFE
         /// <param name="index"></param>
         private void BindActionItem(VisualElement element, int index)
         {
+            var container = element.Q<VisualElement>(CONTAINER);
             var action = ((CommonEventData)target).actions[index];
-            // 追加するとserializedObjectがまだアップデートされてないので手動的にさせる
             serializedObject.UpdateIfRequiredOrScript();
             var prop = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index);
-            var enumField = element.Q<EnumField>(ACTION_TYPE);
-            var container = element.Q<VisualElement>(CONTAINER);
 
-            enumField.value = action.actionType;
-            UpdateActionContainer(container, action, prop);
+            (element as BindableElement).BindProperty(prop);
 
-            enumField.RegisterValueChangedCallback(evt =>
+            var containerElement = new ContainerElement
             {
-                action.actionType = (EventActionType)evt.newValue;
-                EditorUtility.SetDirty(target);
-                Debug.Log($"Change Type: {index} / {action.actionType}");
+                Container = container,
+                Action = action,
+                Property = prop
+            };
+            UpdateActionContainer(containerElement);
 
-                UpdateActionContainer(container, action, prop);
-            });
+            // アクションタイプの変更を監視
+            container.UnregisterCallback((ChangeEvent<SerializedProperty> evt) => ActionChangeCallback(evt, element, index));
+            container.RegisterCallback((ChangeEvent<SerializedProperty> evt) => ActionChangeCallback(evt, element, index));
+
+            var enumField = element.Q<EnumField>(ACTION_TYPE);
+            enumField.UnregisterValueChangedCallback((ChangeEvent<Enum> evt) => ActionChangeCallback(evt, element, index));
+            enumField.RegisterValueChangedCallback((ChangeEvent<Enum> evt) => ActionChangeCallback(evt, element, index));
         }
 
-        /// <summary>
+        private void ActionChangeCallback(ChangeEvent<Enum> evt, VisualElement element, int index)
+        {
+            if (evt.newValue == null) return;
+            if (index < 0 || index >= ((CommonEventData)target).actions.Length) return;
+
+            // Debug.Log("ActionChangeCallback - Enum");
+            if (ConvertEventToContainer(element, index) is var container)
+            {
+                UpdateActionContainer(container);
+            }
+        }
+
+        private void ActionChangeCallback(ChangeEvent<SerializedProperty> evt, VisualElement element, int index)
+        {
+            if (evt.newValue == null) return;
+            if (index < 0 || index >= ((CommonEventData)target).actions.Length) return;
+
+            // Debug.Log("ActionChangeCallback - SerializedProperty");
+            if (ConvertEventToContainer(element, index) is ContainerElement containerElement)
+            {
+                UpdateActionContainer(containerElement);
+            }
+        }
+
+        private ContainerElement ConvertEventToContainer(VisualElement element, int index)
+        {
+            var container = new ContainerElement
+            {
+                Container = element.Q<VisualElement>(CONTAINER),
+                Action = ((CommonEventData)target).actions[index],
+                Property = serializedObject.FindProperty("actions").GetArrayElementAtIndex(index)
+            };
+            return container;
+        }
+
+        /// <summary> 
         /// アクションコンテナを更新する
         /// </summary>
         /// <param name="container"></param>
         /// <param name="type"></param>
-        private void UpdateActionContainer(VisualElement container, CommonEventAction action, SerializedProperty actionProperty)
+        private void UpdateActionContainer(ContainerElement element)
         {
-            container.Clear();
+            element.Container.Clear();
             VisualTreeAsset asset = null;
             string propertyName = null;
-            switch (action.actionType)
+
+            switch (element.Action.actionType)
             {
                 case EventActionType.Talk:
-                    asset = actionTalkAsset;
-                    propertyName = nameof(CommonEventAction.talkAction);
+                    UpdateTalkAction(element);
                     break;
                 case EventActionType.Choose:
                     asset = actionChooseAsset;
@@ -104,9 +145,24 @@ namespace sh0uRoom.GFE
             if (asset != null)
             {
                 var clonedAsset = asset.CloneTree();
-                container.Add(clonedAsset);
-                clonedAsset.BindProperty(actionProperty.FindPropertyRelative(propertyName));
+                element.Container.Add(clonedAsset);
+                // Debug.Log($"Bind Property: {actionProperty} / {propertyName}");
+                clonedAsset.BindProperty(element.Property.FindPropertyRelative(propertyName));
             }
+        }
+
+        private void UpdateTalkAction(ContainerElement element)
+        {
+            var asset = actionTalkAsset.CloneTree();
+            element.Container.Add(asset);
+            asset.BindProperty(element.Property.FindPropertyRelative(nameof(CommonEventAction.talkAction)));
+        }
+
+        private class ContainerElement
+        {
+            public VisualElement Container { get; set; }
+            public CommonEventAction Action { get; set; }
+            public SerializedProperty Property { get; set; }
         }
 
         [SerializeField] private VisualTreeAsset actionRootAsset;
@@ -119,5 +175,9 @@ namespace sh0uRoom.GFE
 
         private const string ACTION_TYPE = "ActionType";
         private const string CONTAINER = "Container";
+        // --- Talk Action ---
+        private const string TALK_NAME = "Name";
+        private const string TALK_TEXT = "Text";
+        private const string WINDOW_COLOR = "WindowColor";
     }
 }
