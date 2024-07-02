@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="ChooseItemView" style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+        <ui:RadioButton binding-path="defaultId" name="DefaultID" />
+        <ui:TextField picking-mode="Ignore" value="text" binding-path="text" name="Text" style="width: 45%;" />
+        <ui:TextField picking-mode="Ignore" value="event name" binding-path="eventNames" name="EventName" style="width: 45%;" />
+    </ui:VisualElement>
+</ui:UXML>

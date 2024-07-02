@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="ActionItemView" style="flex-grow: 1;">
+        <ui:EnumField label="アクションタイプ" type="sh0uRoom.GFE.EventActionType, sh0uRoom.GFE" name="ActionType" binding-path="actionType" />
+        <ui:VisualElement name="Container" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

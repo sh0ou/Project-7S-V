@@ -1,0 +1,51 @@
+{
+    "action": [
+        {
+            "talk": {
+                "name": "name",
+                "text": "text",
+                "windowColor": "ff0000"
+            },
+            "choose": {},
+            "paramChange": {},
+            "paramBranch": {}
+        },
+        {
+            "talk": {},
+            "choose": {
+                "text": [
+                    "text1",
+                    "text2"
+                ],
+                "defaultId": 0,
+                "event": [
+                    "eventName",
+                    "eventName"
+                ]
+            },
+            "paramChange": {},
+            "paramBranch": {}
+        },
+        {
+            "talk": {},
+            "choose": {},
+            "paramChange": {
+                "inputId": "123",
+                "outputId": "I00002"
+            },
+            "paramBranch": {}
+        },
+        {
+            "talk": {},
+            "choose": {},
+            "paramChange": {},
+            "paramBranch": {
+                "refId": "I00002",
+                "ifValue": "1",
+                "ifSign": 0,
+                "trueEvent": "eventName",
+                "falseEvent": "eventName"
+            }
+        }
+    ]
+}
