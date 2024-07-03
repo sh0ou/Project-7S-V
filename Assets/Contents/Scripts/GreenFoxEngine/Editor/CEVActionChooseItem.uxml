@@ -1,6 +1,6 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <ui:VisualElement name="ChooseItemView" style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
-        <ui:RadioButton binding-path="defaultId" name="DefaultID" />
+        <ui:Label tabindex="-1" text="00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ID" style="padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; -unity-text-align: middle-left;" />
         <ui:TextField picking-mode="Ignore" value="text" binding-path="text" name="Text" style="width: 45%;" />
         <ui:TextField picking-mode="Ignore" value="event name" binding-path="eventNames" name="EventName" style="width: 45%;" />
     </ui:VisualElement>

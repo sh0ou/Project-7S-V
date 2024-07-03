@@ -1,5 +1,4 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:VisualElement name="ChooseView" style="flex-grow: 1;">
-        <ui:ListView virtualization-method="DynamicHeight" reorderable="true" show-add-remove-footer="true" show-foldout-header="true" header-title="選択肢" name="ChooseItemList" show-border="true" />
-    </ui:VisualElement>
+    <ui:VisualElement name="ChooseView" style="flex-grow: 1;" />
+    <ui:IntegerField label="デフォルト選択肢ID" value="42" name="DefaultID" />
 </ui:UXML>

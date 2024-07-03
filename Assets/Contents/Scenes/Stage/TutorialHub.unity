@@ -481,15 +481,15 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 1166613539}
   eventName: 
   actions:
-  - actionType: 2
+  - actionType: 1
     talkAction:
       name: VVV
       text: Aaa
       windowColor: {r: 1, g: 0, b: 0, a: 0}
     chooseAction:
       text: []
-      defaultId: 0
       eventNames: []
+      defaultId: 0
     paramChangeAction:
       inputId: BBB
       outputId: bbb
