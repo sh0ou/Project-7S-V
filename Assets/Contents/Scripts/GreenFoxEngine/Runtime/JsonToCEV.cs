@@ -110,7 +110,7 @@ namespace sh0uRoom.GFE
 
             var chooseAction = new ChooseAction();
             chooseAction.text = textArray;
-            chooseAction.defaultId = chooseDict["defaultId"].Int;
+            chooseAction.defaultId = chooseDict["defaultId"].UInt;
             chooseAction.eventNames = eventArray;
             return chooseAction;
         }
