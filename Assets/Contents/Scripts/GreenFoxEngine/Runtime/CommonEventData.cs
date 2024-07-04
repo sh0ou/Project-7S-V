@@ -70,9 +70,16 @@ namespace sh0uRoom.GFE
     [System.Serializable]
     public class ChooseAction
     {
-        public string[] text = new string[8];
-        public string[] eventNames = new string[8];
+        public string[] text;
+        public string[] eventNames;
         public uint defaultId;
+        public const uint arraySize = 8;
+
+        public ChooseAction()
+        {
+            text = new string[arraySize];
+            eventNames = new string[arraySize];
+        }
     }
 
     [System.Serializable]
