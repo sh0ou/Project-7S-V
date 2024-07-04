@@ -21,7 +21,7 @@ namespace sh0uRoom.GFE
             root.Add(actionRoot);
 
             var actionList = actionRoot.Q<ListView>();
-            actionList.makeItem = actionItemAsset.Instantiate;
+            actionList.makeItem = MakeActionItem;
             actionList.bindItem = BindActionItem;
 
             return root;
@@ -42,6 +42,26 @@ namespace sh0uRoom.GFE
                     root.Add(new IMGUIContainer(base.OnInspectorGUI));
                 }
             });
+        }
+
+        private VisualElement MakeActionItem()
+        {
+            var asset = actionItemAsset.CloneTree();
+
+            var actions = ((CommonEventData)target).actions;
+            foreach (var action in actions)
+            {
+                switch (action.actionType)
+                {
+                    case EventActionType.Choose:
+                        action.chooseAction = new ChooseAction();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return asset;
         }
 
         /// <summary>
@@ -160,27 +180,34 @@ namespace sh0uRoom.GFE
         private void UpdateChooseAction(ContainerElement element)
         {
             var asset = actionChooseAsset.CloneTree();
-            var itemAsset = actionChooseItemAsset.CloneTree();
-            var chooseView = asset.Q<VisualElement>("ChooseView");
-            var elementAction = element.Property.FindPropertyRelative(nameof(CommonEventAction.chooseAction));
+            element.Container.Add(asset);
 
+            var elementAction = element.Property.FindPropertyRelative(nameof(CommonEventAction.chooseAction));
             var textArray = elementAction.FindPropertyRelative("text");
             var eventNamesArray = elementAction.FindPropertyRelative("eventNames");
 
-            for (int i = 0; i < textArray.arraySize; i++)
+            if (textArray.arraySize == eventNamesArray.arraySize)
             {
-                chooseView.Add(itemAsset);
-                var item = chooseView.Q<VisualElement>($"ChooseItemView");
-                var itemID = item.Q<Label>("ID");
-                var itemText = item.Q<TextField>("Text");
-                var itemEventName = item.Q<TextField>("EventName");
-                
-                itemID.text = i.ToString();
-                Debug.Log(textArray.GetArrayElementAtIndex(i));
-                Debug.Log(eventNamesArray.GetArrayElementAtIndex(i));
-                // itemText.Bind(textArray.GetArrayElementAtIndex(i).serializedObject);
-                // itemEventName.Bind(eventNamesArray.GetArrayElementAtIndex(i).serializedObject);
+                var chooseView = asset.Q<VisualElement>("ChooseView");
+                for (var i = 0; i < textArray.arraySize; i++)
+                {
+                    var itemAsset = actionChooseItemAsset.CloneTree();
+                    chooseView.Add(itemAsset);
+
+                    var itemView = itemAsset.Q<VisualElement>($"ChooseItemView");
+                    var itemID = itemView.Q<Label>("ID");
+                    var itemText = itemView.Q<TextField>("Text");
+                    var itemEventName = itemView.Q<TextField>("EventName");
+
+                    itemID.text = i.ToString();
+                    itemText.BindProperty(textArray.GetArrayElementAtIndex(i));
+                    itemEventName.BindProperty(eventNamesArray.GetArrayElementAtIndex(i));
+                }
             }
+
+            var defaultIDView = asset.Q<IntegerField>("DefaultID");
+            var defaultID = elementAction.FindPropertyRelative("defaultId");
+            defaultIDView.BindProperty(defaultID);
         }
 
         private class ContainerElement
