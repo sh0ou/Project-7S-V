@@ -1,0 +1,12 @@
+{
+  "Name": "いい感じな木の棒",
+  "FileName": "iikanji_stick",
+  "DownloadURL": "https://booth.pm/ja/items/3743904",
+  "LicenseURL": "https://booth.pm/ja/items/3743904",
+  "Vendor": 2,
+  "IsFree": true,
+  "Paths": [
+    "Assets/iikanji_stick/iikanji_stick.fbx",
+    "Assets/iikanji_stick/iikanji_stick.png"
+  ]
+}
