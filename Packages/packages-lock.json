@@ -1,15 +1,15 @@
 {
   "dependencies": {
     "com.masamin.component-icon": {
-      "version": "file:com.masamin.component-icon",
+      "version": "file:com.masamin.component-icon-1.0.0.tgz",
       "depth": 0,
-      "source": "embedded",
+      "source": "local-tarball",
       "dependencies": {}
     },
     "com.seaeees.simple-folder-icon": {
-      "version": "file:com.seaeees.simple-folder-icon",
+      "version": "file:com.seaeees.simple-folder-icon-1.2.3.tgz",
       "depth": 0,
-      "source": "embedded",
+      "source": "local-tarball",
       "dependencies": {}
     },
     "com.unity.ai.navigation": {

@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.masamin.component-icon": "file:com.masamin.component-icon-1.0.0.tgz",
+    "com.seaeees.simple-folder-icon": "file:com.seaeees.simple-folder-icon-1.2.3.tgz",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.test-framework": "1.1.29",
     "com.unity.textmeshpro": "3.0.9",
