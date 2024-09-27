@@ -81,3 +81,8 @@ crashlytics-build.properties
 /[Aa]ssets/Scenes/VRCDefaultWorldScene.meta
 /[Aa]ssets/Scenes/VRCDefaultWorldScene.unity
 /[Aa]ssets/Scenes/VRCDefaultWorldScene.unity.meta
+
+# Custom Assets
+/[Aa]ssets/Fantasy Skybox FREE/*
+/[Aa]ssets/FantasyEnvironments/*
+/Assets/iikanji_stick
