@@ -14942,7 +14942,7 @@ GameObject:
   - component: {fileID: 2711708172038395126}
   - component: {fileID: 2497576363536469632}
   m_Layer: 0
-  m_Name: VRFollowHUD_sample
+  m_Name: VRFollowHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
