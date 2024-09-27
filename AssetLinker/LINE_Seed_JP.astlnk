@@ -1,0 +1,13 @@
+{
+  "Name": "LINE Seed JP",
+  "FileName": "LINE_Seed_JP",
+  "DownloadURL": "https://seed.line.me/index_jp.html",
+  "LicenseURL": "https://seed.line.me/index_jp.html",
+  "Vendor": 0,
+  "IsFree": true,
+  "Paths": [
+    "Assets/Contents/Fonts/LINE_Seed_JP/LINESeedJP_OTF_Rg SDF.asset",
+    "Assets/Contents/Fonts/LINE_Seed_JP/LINESeedJP_OTF_Rg.otf",
+    "Assets/Contents/Fonts/LINE_Seed_JP/OFL.txt"
+  ]
+}
