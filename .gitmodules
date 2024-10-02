@@ -1,0 +1,4 @@
+[submodule "Assets/tutinoco/SimpleNetworkUdonBehaviour"]
+	path = Assets/tutinoco/SimpleNetworkUdonBehaviour
+	url = https://github.com/tutinoco/SimpleNetworkUdonBehaviour
+	branch = main
