@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: PlayerStatusView
+  m_Name: Enemy
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 372e92dfa1ab31046931f7bf6ca845d8,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: d53065e7a67c2594c9ad3a4c69fce6e9,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 59a3c5be7c86bf14f8f4829b33612247, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 399fe0a8b69d001429058aca7292c9c9, type: 3}
   scriptVersion: 2
   compiledVersion: 2
-  behaviourSyncMode: 0
+  behaviourSyncMode: 1
   hasInteractEvent: 0
-  scriptID: 6386363286793950067
+  scriptID: 2457776383648426173
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 

@@ -6,10 +6,23 @@
       "source": "local-tarball",
       "dependencies": {}
     },
-    "com.seaeees.simple-folder-icon": {
-      "version": "file:com.seaeees.simple-folder-icon-1.2.3.tgz",
+    "com.nuruwo8.dark-class-generator": {
+      "version": "https://github.com/sh0ou/vrchat-dark-class-generator.git#feature/support-upm",
       "depth": 0,
-      "source": "local-tarball",
+      "source": "git",
+      "dependencies": {},
+      "hash": "0db0fa22ee2a06ea35c0076849023d9fbf2eb0bb"
+    },
+    "com.seaeees.simple-folder-icon": {
+      "version": "file:F:/Unity/Packages/com.seaeees.simple-folder-icon",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
       "dependencies": {}
     },
     "com.unity.ai.navigation": {
@@ -106,6 +119,33 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.render-pipelines.core": {
+      "version": "14.0.10",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.terrain": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      }
+    },
+    "com.unity.searcher": {
+      "version": "4.9.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.shadergraph": {
+      "version": "14.0.10",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "14.0.10",
+        "com.unity.searcher": "4.9.2"
+      }
+    },
     "com.unity.test-framework": {
       "version": "1.1.33",
       "depth": 1,
@@ -146,6 +186,25 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "com.unity.vectorgraphics": {
+      "version": "2.0.0-preview.25",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.2d.sprite": "1.0.0",
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.unitywebrequestwww": "1.0.0",
+        "com.unity.modules.unitywebrequesttexture": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.10",
@@ -190,7 +249,8 @@
         "com.unity.timeline": "1.7.6",
         "com.unity.xr.management": "4.3.3",
         "com.unity.xr.oculus": "4.0.0",
-        "com.unity.postprocessing": "3.2.2"
+        "com.unity.postprocessing": "3.2.2",
+        "com.unity.ugui": "1.0.0"
       }
     },
     "com.vrchat.core.vpm-resolver": {
@@ -209,9 +269,14 @@
         "com.unity.cinemachine": "2.9.7",
         "com.unity.textmeshpro": "3.0.6",
         "com.unity.inputsystem": "1.2.0",
-        "com.unity.ai.navigation": "1.1.5",
-        "com.unity.ugui": "1.0.0"
+        "com.unity.ai.navigation": "1.1.5"
       }
+    },
+    "io.z3y.github.shadergraph": {
+      "version": "file:io.z3y.github.shadergraph",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "jp.sh0uroom.assetlinker": {
       "version": "1.0.6",

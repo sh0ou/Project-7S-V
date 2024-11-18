@@ -1,12 +1,15 @@
 {
   "dependencies": {
     "com.masamin.component-icon": "file:com.masamin.component-icon-1.0.0.tgz",
-    "com.seaeees.simple-folder-icon": "file:com.seaeees.simple-folder-icon-1.2.3.tgz",
+    "com.nuruwo8.dark-class-generator": "https://github.com/sh0ou/vrchat-dark-class-generator.git#feature/support-upm",
+    "com.seaeees.simple-folder-icon": "file:F:/Unity/Packages/com.seaeees.simple-folder-icon",
     "com.unity.ide.visualstudio": "2.0.22",
+    "com.unity.shadergraph": "14.0.10",
     "com.unity.test-framework": "1.1.29",
     "com.unity.textmeshpro": "3.0.9",
     "com.unity.timeline": "1.7.5",
     "com.unity.ugui": "1.0.0",
+    "com.unity.vectorgraphics": "2.0.0-preview.25",
     "jp.sh0uroom.assetlinker": "1.0.6",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
