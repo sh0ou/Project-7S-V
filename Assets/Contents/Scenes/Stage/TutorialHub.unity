@@ -933,11 +933,11 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 40013999}
   parameterJson: {fileID: 4900000, guid: 941d3b26f819d5b4e897508d66d735a6, type: 3}
-  exp: 0
-  hp: 100
-  mp: 100
-  tp: 0
   userType: 0
+  exp: 0
+  hp: 0
+  mp: 0
+  tp: 0
 --- !u!4 &43175924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4681897337901454, guid: 38688660962a01e41a8b7c8ad0493167,
@@ -1795,11 +1795,11 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 87983803}
   parameterJson: {fileID: 4900000, guid: 958324f6df6623040a435434329c8bfa, type: 3}
+  userType: 1
   exp: 0
-  hp: 100
+  hp: 0
   mp: 0
   tp: 0
-  userType: 1
 --- !u!54 &87983805
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20090,6 +20090,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07f24e35f07ce74ba43afa35d48adf7, type: 3}
+--- !u!1 &1765405485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765405486}
+  m_Layer: 0
+  m_Name: EnemySpawnner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1765405486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765405485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 13, z: 504}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1782392715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 878361669751671472, guid: d752dab29b102d24d9dc43f907529083,
@@ -25330,3 +25361,4 @@ SceneRoots:
   - {fileID: 1612277758}
   - {fileID: 1596241932}
   - {fileID: 1838036850}
+  - {fileID: 1765405486}

@@ -145,6 +145,8 @@ namespace sh0uRoom.PJ7S
         }
 
         [SerializeField] private TextAsset parameterJson;
+        [SerializeField] private UserType userType;
+        public UserType GetUserType() => userType;
 
         // 固定ステータス
         private CharacterParameter parameter
@@ -160,8 +162,6 @@ namespace sh0uRoom.PJ7S
         [SerializeField] private int mp;
         [SerializeField] private int tp;
 
-        [SerializeField] private UserType userType;
-        public UserType GetUserType() => userType;
         private const string DEBUG_HEAD = "[<color=yellow>ParameterableCharacter</color>]";
     }
 
