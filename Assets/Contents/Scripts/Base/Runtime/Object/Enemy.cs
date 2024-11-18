@@ -33,6 +33,7 @@ namespace sh0uRoom.PJ7S
         Idle,   // 待機
         Scout,  // 索敵
         Chase,  // 追跡
-        Engage  // 交戦
+        Attack, // 交戦
+        Return  // 撤退
     }
 }
