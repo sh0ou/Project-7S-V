@@ -15,11 +15,10 @@ namespace sh0uRoom.PJ7S
             myUserType = playerParameter.GetUserType();
             if (myUserType == UserType.Player)
             {
-                lPlayer = Networking.LocalPlayer;
-
                 capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
                 capsuleCollider.isTrigger = true;
             }
+            GetLocalPlayer();
         }
 
         private void LateUpdate()
@@ -34,6 +33,8 @@ namespace sh0uRoom.PJ7S
                     break;
             }
         }
+
+        private void GetLocalPlayer() => lPlayer = Networking.LocalPlayer;
 
         private void OnTriggerEnter(Collider collider) => HitCollider(collider);
 
@@ -52,6 +53,11 @@ namespace sh0uRoom.PJ7S
 
                     playerParameter.SetParameter(PlayerParameterType.Hp, -power);
                     PopDamageEffect(collider, power);
+
+                    if (playerParameter.GetParameter(PlayerParameterType.Hp) <= 0)
+                    {
+                        gameObject.SetActive(false);
+                    }
                     break;
                 case UserType.Enemy:
                     if (myUserType == UserType.Enemy) return;
@@ -69,8 +75,17 @@ namespace sh0uRoom.PJ7S
         private void PopDamageEffect(Collider collider, int power)
         {
             var effect = Instantiate(damageEffect, collider.transform.position, Quaternion.identity);
+            GetLocalPlayer();
+
+            // Y軸のみ回転
+            if (myUserType == UserType.Enemy)
+            {
+                var look = Quaternion.LookRotation(lPlayer.GetPosition() - effect.transform.position);
+                effect.transform.rotation = Quaternion.Euler(0, look.eulerAngles.y + 180, 0);
+            }
+
             effect.GetComponentInChildren<TextMeshProUGUI>().text = power.ToString();
-            effect.GetComponent<Rigidbody>().AddForce(Vector3.up * 2, ForceMode.Impulse);
+            effect.GetComponent<Rigidbody>().AddForce(Vector3.up, ForceMode.Impulse);
             Destroy(effect, 1.0f);
         }
 
