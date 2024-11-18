@@ -29,7 +29,7 @@ namespace sh0uRoom.PJ7S
             switch (myUserType)
             {
                 case UserType.Player:
-                    gameObject.transform.position = lPlayer.GetPosition();
+                    gameObject.transform.SetPositionAndRotation(lPlayer.GetPosition(), lPlayer.GetRotation());
                     break;
                 default:
                     break;
@@ -45,35 +45,36 @@ namespace sh0uRoom.PJ7S
             var paramObj = collider.GetComponent<ParameterableObject>();
             if (!Utilities.IsValid(paramObj)) return;
 
+            var power = paramObj.GetPower();
             switch (paramObj.GetUserType())
             {
                 case UserType.Player:
                     if (myUserType == UserType.Player) return;
                     // 敵に当たった場合
                     Debug.Log($"{DEBUG_HEAD} HitEnemy: <color=yellow>{name}</color> < {collider.name}");
-                    var power = paramObj.GetPower();
-                    playerParameter.SetParameter(PlayerParameterType.Hp, -power);
 
-                    var effect = Instantiate(damageEffect, collider.transform.position, Quaternion.identity);
-                    effect.GetComponentInChildren<TextMeshProUGUI>().text = power.ToString();
-                    effect.GetComponent<Rigidbody>().AddForce(Vector3.up * 2, ForceMode.Impulse);
-                    Destroy(effect, 1.0f);
+                    playerParameter.SetParameter(PlayerParameterType.Hp, -power);
+                    PopDamageEffect(collider, power);
                     break;
                 case UserType.Enemy:
                     if (myUserType == UserType.Enemy) return;
                     // プレイヤーに当たった場合
                     Debug.Log($"{DEBUG_HEAD} HitPlayer: <color=yellow>{name}</color> < {collider.name}");
-                    var enemyPower = paramObj.GetPower();
-                    playerParameter.SetParameter(PlayerParameterType.Hp, -enemyPower);
-
-                    var enemyEffect = Instantiate(damageEffect, collider.transform.position, Quaternion.identity);
-                    enemyEffect.GetComponentInChildren<TextMeshProUGUI>().text = enemyPower.ToString();
-                    enemyEffect.GetComponent<Rigidbody>().AddForce(Vector3.up * 2, ForceMode.Impulse);
-                    Destroy(enemyEffect, 1.0f);
+                    
+                    playerParameter.SetParameter(PlayerParameterType.Hp, -power);
+                    PopDamageEffect(collider, power);
                     break;
                 default:
                     break;
             }
+        }
+
+        private void PopDamageEffect(Collider collider, int power)
+        {
+            var effect = Instantiate(damageEffect, collider.transform.position, Quaternion.identity);
+            effect.GetComponentInChildren<TextMeshProUGUI>().text = power.ToString();
+            effect.GetComponent<Rigidbody>().AddForce(Vector3.up * 2, ForceMode.Impulse);
+            Destroy(effect, 1.0f);
         }
 
         public override void OnAvatarEyeHeightChanged(VRCPlayerApi player, float prevEyeHeightAsMeters)
