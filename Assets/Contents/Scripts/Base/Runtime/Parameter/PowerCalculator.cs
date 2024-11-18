@@ -10,7 +10,7 @@ namespace sh0uRoom.PJ7S
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class PowerCalculator : UdonSharpBehaviour
     {
-        private void Start()
+        private void TestCalculatePower()
         {
             // 仮のパラメータを設定
             currentP.SetParameter(PlayerParameterType.Atk, 100);
@@ -24,7 +24,7 @@ namespace sh0uRoom.PJ7S
         /// パワーを計算
         /// </summary>
         /// <returns>パワー値</returns>
-        private int CalculatePower()
+        public int CalculatePower()
         {
             if (currentP == null || targetP == null)
             {
