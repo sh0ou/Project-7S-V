@@ -9,7 +9,7 @@ namespace sh0uRoom.PJ7S
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ParameterableCharacter : UdonSharpBehaviour
     {
-        private void Start()
+        private void OnEnable()
         {
             LoadJson();
         }
@@ -20,10 +20,9 @@ namespace sh0uRoom.PJ7S
             {
                 Debug.LogError($"{DEBUG_HEAD} ParameterableCharacter is not set.");
                 enabled = false;
-            }
 
-            var parameter = CharacterParameter.New(parameterJson.text);
-            if (Utilities.IsValid(parameter)) LoadParameters(parameter);
+            }
+            ResetParameter();
         }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace sh0uRoom.PJ7S
         /// <param name="parameter"></param>
         private void LoadParameters(CharacterParameter parameter)
         {
-            ResetParameter();
             Debug.Log($"{DEBUG_HEAD} LoadParameters: {parameter}");
             SetParameter(PlayerParameterType.Lv, parameter.Lv(), true);
             SetParameter(PlayerParameterType.MaxHp, parameter.MaxHp(), true);
@@ -47,12 +45,13 @@ namespace sh0uRoom.PJ7S
             SetParameter(PlayerParameterType.Mat, parameter.Mat(), true);
             SetParameter(PlayerParameterType.Mdf, parameter.Mdf(), true);
             SetParameter(PlayerParameterType.Luk, parameter.Luk(), true);
+            Debug.Log($"{DEBUG_HEAD} LoadParameters...OK");
         }
 
-        public void ResetParameter()
+        private void ResetParameter()
         {
-            Debug.Log($"{DEBUG_HEAD} ResetParameter");
-            parameter = CharacterParameter.New();
+            parameter = CharacterParameter.New(parameterJson.text);
+            if (Utilities.IsValid(parameter)) LoadParameters(parameter);
         }
 
         /// <summary>

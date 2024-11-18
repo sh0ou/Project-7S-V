@@ -12,6 +12,8 @@ namespace sh0uRoom.PJ7S
     {
         private void Update()
         {
+            if (!Utilities.IsValid(playerParameter)) return;
+
             foreach (var image in hpGauge)
             {
                 image.fillAmount = (float)playerParameter.GetParameter(PlayerParameterType.Hp) / playerParameter.GetParameter(PlayerParameterType.MaxHp);

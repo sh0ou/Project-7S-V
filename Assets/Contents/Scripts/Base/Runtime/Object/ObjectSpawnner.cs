@@ -10,7 +10,7 @@ namespace sh0uRoom.PJ7S
     {
         private void Start()
         {
-            if (Utilities.IsValid(targetObject))
+            if (Utilities.IsValid(targetObject) && spawnTiming == SpawnTiming.Start)
             {
                 // 対象のオブジェクトを表示
                 targetObject.SetActive(true);
@@ -39,9 +39,16 @@ namespace sh0uRoom.PJ7S
             }
         }
 
+        [SerializeField] private SpawnTiming spawnTiming;
         [SerializeField] private GameObject targetObject;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private float spawnInterval = 30f;
         [SerializeField] private float spawnIntervalTimer = 0f;
+    }
+
+    public enum SpawnTiming
+    {
+        Start,
+        Manual
     }
 }

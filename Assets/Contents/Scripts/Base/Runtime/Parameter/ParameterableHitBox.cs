@@ -9,7 +9,6 @@ namespace sh0uRoom.PJ7S
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ParameterableHitBox : UdonSharpBehaviour
     {
-
         private void Start()
         {
             playerParameter = GetComponent<ParameterableCharacter>();
@@ -38,8 +37,6 @@ namespace sh0uRoom.PJ7S
 
         private void OnTriggerEnter(Collider collider) => HitCollider(collider);
 
-        // private void OnCollisionEnter(Collision collision) => HitCollider(collision.collider);
-
         private void HitCollider(Collider collider)
         {
             var paramObj = collider.GetComponent<ParameterableObject>();
@@ -60,7 +57,7 @@ namespace sh0uRoom.PJ7S
                     if (myUserType == UserType.Enemy) return;
                     // プレイヤーに当たった場合
                     Debug.Log($"{DEBUG_HEAD} HitPlayer: <color=yellow>{name}</color> < {collider.name}");
-                    
+
                     playerParameter.SetParameter(PlayerParameterType.Hp, -power);
                     PopDamageEffect(collider, power);
                     break;
