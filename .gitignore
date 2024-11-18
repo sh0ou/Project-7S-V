@@ -83,6 +83,7 @@ crashlytics-build.properties
 /[Aa]ssets/Scenes/VRCDefaultWorldScene.unity.meta
 
 # Custom Assets
-/[Aa]ssets/Fantasy Skybox FREE/*
-/[Aa]ssets/FantasyEnvironments/*
+/Assets/Fantasy Skybox FREE
+/Assets/FantasyEnvironments
 /Assets/iikanji_stick
+/Assets/lemole_monster_slug_pink

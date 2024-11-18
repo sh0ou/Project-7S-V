@@ -1,0 +1,15 @@
+{
+  "Name": "モンスターモデル　ピンクスラッグ",
+  "FileName": "lemole_monster_slug_pink",
+  "DownloadURL": "https://booth.pm/ja/items/5486645",
+  "LicenseURL": "",
+  "Vendor": 2,
+  "IsFree": true,
+  "Paths": [
+    "Assets/lemole_monster_slug_pink/blend",
+    "Assets/lemole_monster_slug_pink/blend/slug_pink.blend",
+    "Assets/lemole_monster_slug_pink/png",
+    "Assets/lemole_monster_slug_pink/png/slug_pink_tex.png",
+    "Assets/lemole_monster_slug_pink/slug_pink.fbx"
+  ]
+}
